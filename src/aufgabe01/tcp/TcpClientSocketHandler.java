@@ -14,7 +14,7 @@ public final class TcpClientSocketHandler implements ClientSocketHandler {
 	
 	@Override
 	public Serializable receive() throws IOException, IllegalStateException {
-		// TODO: implement //
+		
 		if(lastReceived) throw new IllegalStateException();
 		lastReceived = true;
 
@@ -27,7 +27,7 @@ public final class TcpClientSocketHandler implements ClientSocketHandler {
 
 	@Override
 	public void send(String tmp) throws IOException, IllegalStateException {
-		// TODO: implement //
+		
 		if(!lastReceived) throw new IllegalStateException();
 		lastReceived = false;
 		

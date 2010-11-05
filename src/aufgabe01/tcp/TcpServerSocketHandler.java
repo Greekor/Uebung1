@@ -29,7 +29,7 @@ public final class TcpServerSocketHandler implements ServerSocketHandler {
 		SERVER_ADDRESS = tmp;
 	}
 	
-	// TODO: implement if required //
+	
 	private ServerSocket ss;	
 	private Socket s;
 	

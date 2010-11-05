@@ -8,8 +8,6 @@ import aufgabe01.rdt.RdtClientSocketHandler;
 import aufgabe01.tcp.TcpClientSocketHandler;
 
 public final class EchoClient {
-
-	// TODO: implement if required //
 	
 	public void loop(){
 		try {

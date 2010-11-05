@@ -8,18 +8,17 @@ import aufgabe01.tcp.TcpServerSocketHandler;
 
 public final class EchoServer {
 	
-	// TODO: implement if required //	
-	
 	public void loop(){
 		try {
 			while(true) {
 				try {
-					String message = this.socketHandler.receive().getString();
+					ReceiveData data = this.socketHandler.receive();
+					String message = data.getString();
 					if(message.equalsIgnoreCase("exit"))
 						break;
 					String s = invert(message);
-					// TODO: Antwort senden
-					this.socketHandler.reply(result, data);
+					
+					this.socketHandler.reply(s, data);
 				} catch(RuntimeException e) {
 					
 				} catch(Error e) {
