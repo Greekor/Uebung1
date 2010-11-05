@@ -7,11 +7,15 @@ import aufgabe01.ReceiveData;
 
 final class TcpReceiveData extends ReceiveData {
 
+	private Socket s;
+	
 	TcpReceiveData(Serializable ser, Socket s) {
 		super(ser);
-		// TODO: implement //
+		this.s = s;
 	}
 
-	// TODO: implement if required //
+	Socket getSocket() {
+		return s;
+	}
 
 }
