@@ -11,5 +11,6 @@
 <listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="aufgabe01.EchoServer"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="tcp"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="GRN1"/>
 </launchConfiguration>

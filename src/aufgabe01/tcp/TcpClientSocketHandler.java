@@ -31,7 +31,7 @@ public final class TcpClientSocketHandler implements ClientSocketHandler {
 		if(!lastReceived) throw new IllegalStateException();
 		lastReceived = false;
 		
-		InetAddress iaddr = InetAddress.getByName("SERVER");
+		InetAddress iaddr = InetAddress.getByAddress(new byte[]{127, 0, 0, 1});
 		s = new Socket(iaddr, 30303);
 		
 		TcpHelper.writeDataToSocket(s, tmp);
