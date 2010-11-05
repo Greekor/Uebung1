@@ -12,7 +12,20 @@ public final class EchoClient {
 	// TODO: implement if required //
 	
 	public void loop(){
-		// TODO: implement //
+		try {
+			while(true) {
+				String line = read();
+				this.socketHandler.send(line);
+				if(line.equalsIgnoreCase("exit"))
+					break;
+				String answer = (String) this.socketHandler.receive();
+				print(answer);
+			}
+			
+			print("leaving loop");
+		} catch(IOException e) {
+			print("error in loop");
+		}
 	}
 	
 	/* please do not add or modify code below this line */
