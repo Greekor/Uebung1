@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.net.SocketAddress;
 import java.net.UnknownHostException;
 
@@ -28,19 +30,29 @@ public final class TcpServerSocketHandler implements ServerSocketHandler {
 	}
 	
 	// TODO: implement if required //
+	private ServerSocket ss;	
+	private Socket s;
 	
 	public TcpServerSocketHandler() throws IOException {
-		// TODO: implement // 
+		ss = new ServerSocket();
+		ss.bind(SERVER_ADDRESS);
 	}
 	
 	@Override
 	public TcpReceiveData receive() throws IOException {
-		// TODO: implement //
-		return null;
+		s = ss.accept();
+		
+		Serializable msg = TcpHelper.readObjectFromSocket(s);
+		return new TcpReceiveData(msg, s);
 	}
 
 	@Override
-	public void reply(Serializable result, ReceiveData data) throws IOException {
-		// TODO: implement //
+	public void reply(Serializable result, ReceiveData data) throws IOException, IllegalArgumentException {
+		if(!(data instanceof TcpReceiveData))
+			throw new IllegalArgumentException();
+		
+		TcpHelper.writeDataToSocket(((TcpReceiveData) data).getSocket(), result);
+		
+		((TcpReceiveData) data).getSocket().close();
 	}
 }
