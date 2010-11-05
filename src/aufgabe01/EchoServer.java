@@ -11,7 +11,26 @@ public final class EchoServer {
 	// TODO: implement if required //	
 	
 	public void loop(){
-		// TODO: implement //
+		try {
+			while(true) {
+				try {
+					String message = this.socketHandler.receive().getString();
+					if(message.equalsIgnoreCase("exit"))
+						break;
+					String s = invert(message);
+					// TODO: Antwort senden
+					this.socketHandler.reply(result, data);
+				} catch(RuntimeException e) {
+					
+				} catch(Error e) {
+					
+				}
+			}
+			
+			this.out.printf("leaving loop");
+		} catch (IOException e) {
+			this.out.printf("error in loop");
+		}
 	}
 	
 	/* please do not add or modify code below this line */
