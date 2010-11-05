@@ -29,6 +29,7 @@ public final class RdtClientSocketHandler implements ClientSocketHandler {
 	public void send(String tmp) throws IOException, IllegalStateException {
 		if(!lastReceived)
 			throw new IllegalStateException();
+		lastReceived = false;
 		SocketPacket sp = new SocketPacket();
 		sp.setReceiver(NetworkInitialiser.getServerAddress());
 		sp.setBody(tmp);
@@ -39,6 +40,7 @@ public final class RdtClientSocketHandler implements ClientSocketHandler {
 	public Serializable receive() throws IOException, IllegalStateException {
 		if(lastReceived)
 			throw new IllegalStateException();
+		lastReceived = true;
 		SocketPacket sp = new SocketPacket();
 		s.receive(sp);
 		return sp.getData();
