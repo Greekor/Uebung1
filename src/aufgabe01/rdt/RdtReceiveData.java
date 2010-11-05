@@ -1,15 +1,20 @@
 package aufgabe01.rdt;
 
+import de.uulm.communication.socket.SocketAddress;
 import de.uulm.communication.socket.SocketPacket;
 
 import aufgabe01.ReceiveData;
 
 final class RdtReceiveData extends ReceiveData {
 	
+	private SocketAddress sender;
+	
 	RdtReceiveData(SocketPacket sp) {
 		super(sp.getData());
-		// TODO: implement //
+		this.sender = sp.getSender();
 	}
 
-	// TODO: implement if required //
+	SocketAddress getSender() {
+		return this.sender;
+	}
 }
